@@ -1,94 +1,85 @@
 
-# Line-bot-python-simple-starter
+# Line-bot-currency-crawler
 
-## 安裝Line-bot-SDK
+## install Line-bot-SDK
 ```
 pip install line-bot-sdk
 ```
 
-## 說明
+## 
+Reference code - [line-bot-sdk-python](https://github.com/line/line-bot-sdk-python), will be using [Heroku](https://www.heroku.com/) to set up environment.
 
-本範例改寫於[line-bot-sdk-python](https://github.com/line/line-bot-sdk-python)，較適合初次接觸聊天機器人架設的人使用，並適用於[Heroku](https://www.heroku.com/)的架設環境。
+## Files
 
-## 運行原理
-![](https://i.imgur.com/8Dz81wh.png)
-
-## 檔案敘述
-
-|檔案名稱|功能|
+|File name|purpose|
 |-|-|
-|app.py|Linebot主程式、Flask應用主程式|
-|Procfile|成功上架至Heroku後的執行檔案，Heroku將會執行這個檔案內所寫的指令 `python app.py`來執行這主程式|
-|requirements.txt|套件需求檔，**所有使用到的外部套件需條列在此檔內**，應用程式上架至Heroku後需透過此檔案替執行環境安裝所需套件|
-|readme.md|本說明文件|
-|.gitignore|條列不想要被git紀錄的檔案|
+|app.py|Linebot main file, Flask main code|
+|Procfile|The execution file. Heroku will execute the command `python app.py` written in this file to execute the main file|
+|requirements.txt|environment requirements|
+|readme.md|description file|
+|.gitignore|Lists the files that you don't want to be recorded by git|
 
-## 初次建構的環境需求
-需要透過此範例架設Line聊天機器人，必須準備好以下步驟
+## Environment requirements
 
-1. 安裝line-bot-sdk請下`pip install line-bot-sdk`
-2. 安裝[Git](https://git-scm.com/)
-3. 註冊[Heroku](https://dashboard.heroku.com/)帳號並安裝[Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
-4. 註[Line開發者帳號](https://developers.line.me/en/)，並替你的機器人建立頻道
-5. 啟用Webhook並取得Channel Secret與Access Token
-6. 請將Channel Secret與Access Token寫入app.py文件指定的位置
-7. 上架應用程式至Heroku
+1. Install line-bot-sdk `pip install line-bot-sdk`
+2. Install [Git](https://git-scm.com/)
+3. Create a [Heroku] account(https://dashboard.heroku.com/) and install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+4. Create a Line developers account [LineDevelopers](https://developers.line.me/en/), and create a channel.
+5. Enable Webhook and obtain Channel Secret and Access Token.
+6. Enter Channel Secret and Access Token to the location specified in the app.py file.
+7. Deploy project to Heroku.
 
-### 1. 安裝Git
+### 1. Install Git
 
-![](https://i.imgur.com/rghIfGS.png)
+Git website - [Git Official website](https://git-scm.com/) download and install Git.
 
-請至Git的[官方網站](https://git-scm.com/)下載並安裝Git
-
-初次安裝好Git請透過終端機輸入以下指令：
+enter commands below in Terminal after Git is installed：
 ```
 git config --global color.ui true
-git config --global user.name 你的使用者名稱
-git config --global user.email 你的Email
+git config --global user.name 
+git config --global user.email 
 ```
 
-### 2. 註冊Heroku帳號並安裝Heroku CLI
+### 2. Sign up to Heroku and install Heroku CLI
 
-![](https://i.imgur.com/p5ciBKT.png)
+1. Go to [Heroku](https://dashboard.heroku.com/) and create an account.
+2. Download and install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+3. Open Terminal and enter `heroku login` to login Heroku.
 
-1. 至[Heroku官方網站](https://dashboard.heroku.com/)註冊使用者帳號
-2. 下載[Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)並安裝至電腦內
-3. 在終端機內輸入指令`heroku login`登入Heroku
+### 3. Sign up to Line developers, and create a channel for your line bot.
 
-### 3. 註冊Line開發者帳號，並替你的機器人建立頻道
+1. Go to [Line developers](https://developers.line.me/en/), select *Start using messaging API* and use Line account to login.
+2. create or choose a Provider.
+3. create a channel and enter all relevant info.
 
-1. 前往[Line開發者頁面](https://developers.line.me/en/)點選*Start using messaging API* 並且使用LINE帳號登入
-2. 建立或選擇一個Provider
-3. 建立一個Channel並輸入相關資訊
+### 4. Enable Webhook and obatin Channel Secret and Access Token
+1. Select your line bot account and go to Basic settings.
+2. In basic settings, you would see Channel Secret，and Access Token in Messaging API.
+3. Enter Channel Secret and Access Token to the location specified in the app.py file.
+4. Enable Use webhooks, rewrite the Webhook URL to `your-heroku-project-name.herokuapp.com/callback`
 
-### 4. 啟用Webhook並取得Channel Secret與Access Token
-1. 點選剛才建立的機器人帳號並進入編輯頁面
-2. 在編輯頁面中你可以找到頻道的Channel Secret，並產生一組Access Token
-3. 將Channel Secret與Access Token寫入app.py文件指定的位置內
-4. 點選Use webhooks並改寫成Enabled，將Webhook URL的對應網址改成 `你的heroku專案名稱.herokuapp.com/callback`
+## Deploy project to Heroku
 
-## 初次上架專案至Heroku
+### 1. Create a Heroku app
 
-### 1. 建立一個Heroku專案
+Go to [Heroku Dashboard](https://dashboard.heroku.com/apps) and select the upper rightcorner new -> Create new app.
 
-前往[Heroku Dashboard](https://dashboard.heroku.com/apps)並點選右上角的 new -> Create new app，建立一個專案。
+### 2. Use git to deploy project to Heroku
 
-### 2. 透過Git上架專案至Heroku
-
-在專案資料夾內，開啟終端機並輸入以下指令：
+In the project folder, open Terminal and enter the following commands：
 
 ```
 git init
 git add .
-git commit -m "專案第一次上架"
-heroku git:remote -a Heroku的專案名稱
+git commit -m "initial commit"
+heroku git:remote -a Project-name-on-heroku
 git push heroku master
 ```
 
-## 更新專案至Heroku
+## Update project to Heroku.
 
 ```
 git add .
-git commit -m "寫入你做的修改"
+git commit -m "comment on changes made"
 git push heroku master
 ```
